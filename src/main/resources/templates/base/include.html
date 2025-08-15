@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<div th:fragment="header">-->
+<!--    <div style="margin-top:1em">-->
+<!--        <i class="bi bi-bicycle" ></i>  서비스 이름-->
+<!--        <a href="./login" class="btn btn-outline-secondary"><i class="bi bi-airplane" style="color:skyblue;"></i>로그인</a>-->
+<!--        <a href="./logout" class="btn btn-outline-secondary">로그아웃</a>-->
+<!--    </div>-->
+
+<!--    <hr>-->
+<!--</div>-->
+
+<div th:fragment="header">
+    <div class="d-flex align-items-center justify-content-between my-3">
+        <!-- 서비스 이름 (왼쪽) -->
+        <div>
+            <i class="bi bi-bicycle"></i> 서비스 이름
+        </div>
+
+        <!-- 네비게이션 바 (중간) -->
+        <nav class="flex-grow-1 text-center">
+            <a href="/user/list" class="mx-3 text-decoration-none text-secondary">
+                유저 정보
+            </a>
+            <a href="/loantest/list" class="mx-3 text-decoration-none text-secondary">
+                대출 평가 정보
+            </a>
+        </nav>
+
+        <!-- 로그인/로그아웃 버튼 (오른쪽) -->
+        <div class="d-flex">
+            <a href="/login" class="btn btn-outline-secondary me-2">
+                <i class="bi bi-airplane" style="color:skyblue;"></i>로그인
+            </a>
+            <a href="/logout" class="btn btn-outline-secondary">로그아웃</a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+<div th:fragment="footer">
+    <hr>
+    footer 영역입니다.
+</div>
+<!--</html>-->

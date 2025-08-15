@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base/default_layout}"> <!-- head, body 가 default_layout에 있기에 여기서는 제거 -->
+
+<!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
+<div layout:fragment="content">
+  <h1>부서 목록</h1>
+  <table border = "1" class="table table-hover" id="user_table">
+    <thead>
+    <tr>
+      <th>속성</th>
+      <th>값</th>
+    </tr>
+    </thead>
+    <tbody th:object="${testInfo}">
+    <tr>
+      <td>유저 아이디</td>
+      <td th:text="${testInfo.userId}"></td>
+    </tr>
+    <tr>
+      <td>이름</td>
+      <td th:text="${testInfo.name}"></td>
+    </tr>
+    <tr>
+      <td>나이</td>
+      <td th:text="${testInfo.age}"></td>
+    </tr>
+    <tr>
+      <td>성별</td>
+      <td th:text="${testInfo.gender}"></td>
+    </tr>
+    <tr>
+      <td>학교</td>
+      <td th:text="${testInfo.education}"></td>
+    </tr>
+    <tr>
+      <td>집 소유 여부</td>
+      <td th:text="${testInfo.homeOwnership}"></td>
+    </tr>
+    <tr>
+      <td>대출 아이디</td>
+      <td th:text="${testInfo.loanId}"></td>
+    </tr>
+    <tr>
+      <td>수입</td>
+      <td th:text="${testInfo.income}"></td>
+    </tr>
+    <tr>
+      <td>경력</td>
+      <td th:text="${testInfo.empExp}"></td>
+    </tr>
+    <tr>
+      <td>대출 금액</td>
+      <td th:text="${testInfo.amount}"></td>
+    </tr>
+    <tr>
+      <td>대출 목적</td>
+      <td th:text="${testInfo.intent}"></td>
+    </tr>
+    <tr>
+      <td>이자율</td>
+      <td th:text="${testInfo.intRate}"></td>
+    </tr>
+    <tr>
+      <td>소득 대비 대출 비율</td>
+      <td th:text="${testInfo.loanPercentIncome}"></td>
+    </tr>
+    <tr>
+      <td>신용 기록 기간</td>
+      <td th:text="${testInfo.credHistLength}"></td>
+    </tr>
+    <tr>
+      <td>신용 점수</td>
+      <td th:text="${testInfo.creditScore}"></td>
+    </tr>
+    <tr>
+      <td>이전 대출 불이행 여부</td>
+      <td th:text="${testInfo.previousLoanDefaults}"></td>
+    </tr>
+    <tr>
+      <td>대출 상태</td>
+      <td th:text="${testInfo.loanStatus}"></td>
+    </tr>
+    </tbody>
+
+  </table>
+  <a href="http://localhost:8088/loantest/list" class="main_page_button">back to Main</a>
+  <a th:href="@{/loantest/update/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="update_button">update info</a>
+  <a th:href="@{/loantest/delete/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="delete_button">delete info</a>
+
+  [[ ${message} ]]
+</div>
+
+<div layout:fragment="script">
+  <script>
+
+  </script>
+
+</div>
+
+</html>

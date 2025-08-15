@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bank.bankservice.loantest.dao.LoanRepository">
+
+    <select id="getLoanCount" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM loan
+        <if test="loanId != null">
+            WHERE loan_id = #{loanId}
+        </if>
+    </select>
+
+    <select id="getLoanList" resultType="com.bank.bankservice.loantest.model.Loan">
+        SELECT * FROM loan
+    </select>
+
+    <select id="getLoanInfo" parameterType="int" resultType="com.bank.bankservice.loantest.model.Loan">
+        SELECT 	    loan_id             AS  loanId,
+                    user_id	            AS 	userId,
+                    income 	            AS 	income,
+                    emp_exp 	        AS  empExp,
+                    amount              AS  amount,
+                    intent              AS  intent,
+                    int_rate 	            AS 	intRate,
+                    loan_percent_income     AS 	loanPercentIncome,
+                    cred_hist_length 	    AS 	credHistLength,
+                    credit_score 	        AS 	creditScore,
+                    previous_loan_defaults 	AS 	previousLoanDefaults,
+                    loan_status 	        AS 	loanStatus
+        FROM loan WHERE loan_id = #{loanId}
+    </select>
+
+<!--    이미 기록된 요소를 업데이트 할 필요는 없다고 판단됨. 새로운 insert 가 발생하는 것이 더 좋을 듯?-->
+<!--    <update id="updateLoan" parameterType="com.bank.bankservice.loantest.model.Loan">-->
+<!--        UPDATE loan-->
+<!--        SET name=#{name}, age=#{age}, gender=#{gender}, education=#{education}, home_ownership=#{homeOwnership}-->
+<!--        WHERE user_id = #{userId}-->
+<!--    </update>-->
+
+    <insert id="insertLoan" parameterType="com.bank.bankservice.loantest.model.Loan">
+        INSERT INTO loan ( loan_id, user_id, income, emp_exp, amount, intent, int_rate, loan_percent_income,
+                          cred_hist_length, credit_score, previous_loan_defaults, loan_status)
+        VALUES ( #{loanId}, #{userId}, #{income}, #{empExp}, #{amount}, #{intent}, #{intRate}, #{loanPercentIncome},
+                #{credHistLength},#{creditScore},#{previousLoanDefaults},#{loanStatus})
+    </insert>
+
+    <delete id="deleteLoan" parameterType="com.bank.bankservice.loantest.model.Loan">
+        DELETE FROM loan
+        WHERE user_id=#{userId} and loan_id=#{loanId}
+    </delete>
+
+</mapper>

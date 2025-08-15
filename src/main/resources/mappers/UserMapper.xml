@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bank.bankservice.loantest.dao.UserRepository">
+
+    <select id="getUserCount" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM user
+        <if test="userId != null">
+            WHERE user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="getUserList" resultType="com.bank.bankservice.loantest.model.User">
+        SELECT * FROM user
+    </select>
+
+    <select id="getUserInfo" parameterType="int" resultType="com.bank.bankservice.loantest.model.User">
+        SELECT 	  user_id           AS  userId,
+                  name	            AS 	name,
+                  age 	            AS 	age,
+                  gender 	        AS  gender,
+                  education         AS  education,
+                  home_ownership    AS  homeOwnership
+        FROM user WHERE user_id = #{userId}
+    </select>
+
+    <update id="updateUser" parameterType="com.bank.bankservice.loantest.model.User">
+        UPDATE user
+        SET name=#{name}, age=#{age}, gender=#{gender}, education=#{education}, home_ownership=#{homeOwnership}
+        WHERE user_id = #{userId}
+    </update>
+
+    <insert id="insertUser" parameterType="com.bank.bankservice.loantest.model.User">
+        INSERT INTO user ( user_id, name, age, gender, education, home_ownership )
+        VALUES ( #{userId}, #{name}, #{age}, #{gender}, #{education}, #{homeOwnership})
+    </insert>
+
+    <delete id="deleteUser" parameterType="com.bank.bankservice.loantest.model.User">
+        DELETE FROM user
+        WHERE user_id=#{userId}
+    </delete>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bank.bankservice.loantest.dao.LoanTestRepository">
+
+    <select id="getTestCount" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM user join loan on user.user_id = loan.user_id
+        <if test="id != null">
+            WHERE user_id = #{userId} and loan_id = #{loanId}
+        </if>
+    </select>
+
+    <select id="getTestList" resultType="com.bank.bankservice.loantest.dto.LoanTest">
+        SELECT * FROM user join loan on user.user_id = loan.user_id
+    </select>
+
+    <select id="getTestInfo" parameterType="int" resultType="com.bank.bankservice.loantest.dto.LoanTest">
+        SELECT
+            user.user_id            AS  userId,
+            user.name               AS  name,
+            user.age                AS  age,
+            user.gender             AS  gender,
+            user.education          AS  education,
+            user.home_ownership     AS  homeOwnership,
+            loan.loan_id            AS  loanId,
+            loan.income             AS  income,
+            loan.emp_exp            AS  empExp,
+            loan.amount             AS  amount,
+            loan.intent             AS  intent,
+            loan.int_rate           AS  intRate,
+            loan.loan_percent_income    AS  loanPercentIncome,
+            loan.cred_hist_length   AS  credHistLength,
+            loan.credit_score       AS  creditScore,
+            loan.previous_loan_defaults AS  previousLoanDefaults,
+            loan.loan_status        AS  loanStatus
+        FROM user
+                 JOIN loan ON user.user_id = loan.user_id
+        WHERE user.user_id = #{userId} AND loan.loan_id = #{loanId};
+    </select>
+
+</mapper>

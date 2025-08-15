@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base/default_layout}"> <!-- head, body 가 default_layout에 있기에 여기서는 제거 -->
+
+<!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
+<div layout:fragment="content">
+    <h1>부서 목록</h1>
+    <table border = "1" class="table table-hover" id="user_table">
+        <thead>
+        <tr>
+            <th>속성</th>
+            <th>값</th>
+        </tr>
+        </thead>
+        <tbody th:object="${user}">
+        <tr>
+            <td>유저 아이디</td>
+            <td th:text="${user.userId}"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td th:text="${user.name}"></td>
+        </tr>
+        <tr>
+            <td>나이</td>
+            <td th:text="${user.age}"></td>
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td th:text="${user.gender}"></td>
+        </tr>
+        <tr>
+            <td>학교</td>
+            <td th:text="${user.education}"></td>
+        </tr>
+        <tr>
+            <td>집 소유 여부</td>
+            <td th:text="${user.homeOwnership}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+    <a href="http://localhost:8088/user/list" class="main_page_button">back to Main</a>
+    <a th:href="@{/user/update/{id}(id=${user.userId})}" class="update_button">update info</a>
+    <a th:href="@{/user/delete/{id}(id=${user.userId})}" class="delete_button">delete info</a>
+
+    [[ ${message} ]]
+</div>
+
+<div layout:fragment="script">
+    <script>
+
+    </script>
+
+</div>
+
+</html>
