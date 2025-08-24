@@ -15,7 +15,7 @@ public class User {
     private int userId;
     private String name;
     private double age;
-    private String gender;
+    private int gender;
     private String education;
     private String homeOwnership;
 }

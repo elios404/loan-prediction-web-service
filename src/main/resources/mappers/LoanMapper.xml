@@ -26,7 +26,8 @@
                     cred_hist_length 	    AS 	credHistLength,
                     credit_score 	        AS 	creditScore,
                     previous_loan_defaults 	AS 	previousLoanDefaults,
-                    loan_status 	        AS 	loanStatus
+                    loan_status 	        AS 	loanStatus,
+                    loan_explain            AS  loanExplain
         FROM loan WHERE loan_id = #{loanId}
     </select>
 
@@ -39,9 +40,9 @@
 
     <insert id="insertLoan" parameterType="com.bank.bankservice.loantest.model.Loan">
         INSERT INTO loan ( loan_id, user_id, income, emp_exp, amount, intent, int_rate, loan_percent_income,
-                          cred_hist_length, credit_score, previous_loan_defaults, loan_status)
+                          cred_hist_length, credit_score, previous_loan_defaults, loan_status, loan_explain)
         VALUES ( #{loanId}, #{userId}, #{income}, #{empExp}, #{amount}, #{intent}, #{intRate}, #{loanPercentIncome},
-                #{credHistLength},#{creditScore},#{previousLoanDefaults},#{loanStatus})
+                #{credHistLength},#{creditScore},#{previousLoanDefaults},#{loanStatus}, #{loanExplain, jdbcType=VARCHAR})
     </insert>
 
     <delete id="deleteLoan" parameterType="com.bank.bankservice.loantest.model.Loan">

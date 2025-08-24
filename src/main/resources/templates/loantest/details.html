@@ -85,9 +85,9 @@
     </tbody>
 
   </table>
-  <a href="http://localhost:8088/loantest/list" class="main_page_button">back to Main</a>
-  <a th:href="@{/loantest/update/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="update_button">update info</a>
-  <a th:href="@{/loantest/delete/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="delete_button">delete info</a>
+  <a href="http://localhost:8088/api/loantest/list" class="main_page_button">back to Main</a>
+  <a th:href="@{/api/loantest/update/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="update_button">update info</a>
+  <a th:href="@{/api/loantest/delete/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="delete_button">delete info</a>
 
   [[ ${message} ]]
 </div>

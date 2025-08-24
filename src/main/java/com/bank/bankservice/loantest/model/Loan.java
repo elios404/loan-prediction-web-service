@@ -2,6 +2,8 @@ package com.bank.bankservice.loantest.model;
 
 import lombok.*;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @ToString
@@ -23,6 +25,7 @@ public class Loan {
     private double loanPercentIncome;
     private double credHistLength;
     private int creditScore;
-    private boolean previousLoanDefaults;
+    private int previousLoanDefaults;
     private int loanStatus;
+    private Map<String,Object> loanExplain;
 }

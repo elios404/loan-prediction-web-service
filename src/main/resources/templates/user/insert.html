@@ -5,7 +5,7 @@
 
 <!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
 <div layout:fragment="content">
-    <h1>부서 목록</h1>
+    <h1>유저 정보 입력</h1>
     <form action="./insert" method="post" id="frmForm">
         <ul th:object="${user}">
             <li>
@@ -23,18 +23,31 @@
             <li>
                 <label>성별 : </label>
                 <select th:field="*{gender}" required>
-                    <option value="" disabled selected>선택하세요</option>
-                    <option value="남">남</option>
-                    <option value="여">여</option>
+                    <option value="0" disabled selected>선택하세요</option>
+                    <option th:value="0" th:text="남성"></option>
+                    <option th:value="1" th:text="여성"></option>
                 </select>
             </li>
             <li>
                 <label>학교 : </label>
-                <input type="text" th:field="*{education}" maxlength="13"  required>
+                <select th:field="*{education}" required>
+                    <option value="" disabled selected>선택하세요</option>
+                    <option value="High School">고등학교 졸업</option>
+                    <option value="Associate">준학사</option>
+                    <option value="Bachelor">학사</option>
+                    <option value="Master">석사</option>
+                    <option value="Doctorate">박사</option>
+                </select>
             </li>
             <li>
-                <label>집 소유 여부 : </label>
-                <input type="text" th:field="*{homeOwnership}" maxlength="13"  required>
+                <label>주택 여부 : </label>
+                <select th:field="*{homeOwnership}" required>
+                    <option value="" disabled selected>선택하세요</option>
+                    <option value="RENT">월세/전세</option>
+                    <option value="MORTGAGE">모기지</option>
+                    <option value="OWN">자가</option>
+                    <option value="OTHER">기타</option>
+                </select>
             </li>
 
         </ul>

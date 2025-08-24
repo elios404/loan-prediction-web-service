@@ -5,7 +5,7 @@
 
 <!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
 <div layout:fragment="content">
-    <h1>부서 목록</h1>
+    <h1>유저 목록</h1>
     <table border = "1" class="table table-hover" id="user_table">
         <thead>
         <tr>
@@ -14,7 +14,7 @@
             <th>나이</th>
             <th>성별</th>
             <th>학교</th>
-            <th>집 소유 여부</th>
+            <th>주택 여부</th>
         </tr>
         </thead>
 
@@ -23,7 +23,7 @@
                 <td th:text="${user.userId}"></td>
                 <td><a th:href="@{/user/details/{id}(id=${user.userId})}">[[ ${user.name} ]]</a></td>
                 <td th:text="${user.age}"></td>
-                <td th:text="${user.gender}"></td>
+                <td th:text="${user.gender == 0 ? '남성' : '여성'}"></td>
                 <td th:text="${user.education}"></td>
                 <td th:text="${user.homeOwnership}"></td>
             </tr>
