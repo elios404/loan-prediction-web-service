@@ -121,15 +121,16 @@ public class LoanTestAPIController {
 
             // 4. 응답 처리 및 예측 결과 반영
             int predictedLoanStatus = ((Number) fastAPIResponse.get("prediction")).intValue();
-            Map<String, Object> loanExplain = (Map<String, Object>) fastAPIResponse.get("shap_values");
+            List<Double> loanExplain = (List<Double>) fastAPIResponse.get("shap_values");
 
-            loanTest.setLoanStatus(predictedLoanStatus); // 예측된 대출 상태를 객체에 설정
+//            loanTest.setLoanStatus(predictedLoanStatus); // 예측된 대출 상태를 객체에 설정
 
             // 5. LoanTest 객체를 Loan 객체로 변환하여 DB에 저장
             Loan loan = new Loan();
             BeanUtils.copyProperties(loanTest, loan); // LoanTest의 속성을 Loan으로 복사
 
             // FastAPI에서 받은 SHAP 값을 Loan 객체의 loanExplain 필드에 설정
+            loan.setLoanStatus(predictedLoanStatus);
             loan.setLoanExplain(loanExplain);
 
             loanService.insertLoan(loan);
