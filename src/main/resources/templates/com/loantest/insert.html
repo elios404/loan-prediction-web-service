@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{com/base/default_layout}"> <!-- head, body 가 default_layout에 있기에 여기서는 제거 -->
+
+<!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
+<div layout:fragment="content">
+  <div class="py-12 px-4 md:px-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">대출 평가 관련 요소 입력</h1>
+
+    <div class="bg-white rounded-lg shadow-xl overflow-hidden p-8 max-w-2xl mx-auto">
+      <form action="/api/loantest/insert" method="post" id="frmForm" class="space-y-6">
+        <ul th:object="${loanTest}" class="space-y-6">
+          <li>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">유저 정보</h3>
+            <label for="userId" class="block text-sm font-medium text-gray-700">유저 아이디 : </label>
+            <input type="number" id="userId" th:field="*{userId}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+
+          <li>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 mt-6">대출 정보</h3>
+            <label for="loanId" class="block text-sm font-medium text-gray-700">대출 아이디 : </label>
+            <input type="number" id="loanId" th:field="*{loanId}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="income" class="block text-sm font-medium text-gray-700">수입 : </label>
+            <input type="number" id="income" th:field="*{income}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="empExp" class="block text-sm font-medium text-gray-700">경력 : </label>
+            <input type="number" id="empExp" th:field="*{empExp}" min="0" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="amount" class="block text-sm font-medium text-gray-700">대출 금액 : </label>
+            <input type="number" id="amount" th:field="*{amount}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="intent" class="block text-sm font-medium text-gray-700">대출 목적 : </label>
+            <select id="intent" th:field="*{intent}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+              <option value="" disabled selected>선택하세요</option>
+              <option value="EDUCATION">교육</option>
+              <option value="MEDICAL">의료</option>
+              <option value="VENTURE">사업</option>
+              <option value="PERSONAL">개인</option>
+              <option value="DEBTCONSOLIDATION">부채 통합</option>
+              <option value="HOMEIMPROVEMENT">주택 개량</option>
+            </select>
+          </li>
+          <li>
+            <label for="intRate" class="block text-sm font-medium text-gray-700">이자율 : </label>
+            <input type="number" id="intRate" th:field="*{intRate}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="loanPercentIncome" class="block text-sm font-medium text-gray-700">소득 대비 대출 비율 : </label>
+            <input type="number" id="loanPercentIncome" th:field="*{loanPercentIncome}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="credHistLength" class="block text-sm font-medium text-gray-700">신용 기록 기간 : </label>
+            <input type="number" id="credHistLength" th:field="*{credHistLength}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="creditScore" class="block text-sm font-medium text-gray-700">신용 점수 : </label>
+            <input type="number" id="creditScore" th:field="*{creditScore}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+          </li>
+          <li>
+            <label for="previousLoanDefaults" class="block text-sm font-medium text-gray-700">이전 대출 불이행 여부 : </label>
+            <select id="previousLoanDefaults" th:field="*{previousLoanDefaults}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+              <option value="0" selected>없음</option>
+              <option value="1">있음</option>
+            </select>
+          </li>
+        </ul>
+
+        <button type="submit" class="w-full bg-blue-600 text-white hover:bg-blue-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out" id="btnNew">
+          신규등록
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</html>

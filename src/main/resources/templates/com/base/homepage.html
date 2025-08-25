@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{com/base/default_layout}">
+
+<div layout:fragment="content">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 rounded-lg shadow-xl mb-12">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="
+              background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            "></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-white">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-8">
+          AI 기반 스마트 대출 서비스
+        </h1>
+
+        <div class="flex justify-center mb-8">
+          <div class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg transform rotate-1 shadow-lg inline-block text-center">
+            <p class="text-lg font-semibold leading-tight">
+              대출 심사 과정의 불투명성과 비효율성<br/>
+              문제 해결!
+            </p>
+          </div>
+        </div>
+
+        <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto">
+          XGBoost 기반 AI 모델을 활용한 투명하고 빠른 대출 심사 서비스입니다.
+          데이터 기반의 정확한 분석으로 공정한 대출 기회를 제공합니다.
+        </p>
+
+        <div class="space-y-4">
+          <a href="/apply" class="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-semibold rounded-md shadow-lg inline-block transition-colors duration-200">
+            지금 대출 신청하기
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problem & Solution Section -->
+  <div class="py-20 bg-white rounded-lg shadow-xl mb-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          기존 대출 시스템의 문제점
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          전통적인 대출 시스템이 가진 근본적인 한계와 문제점들을 AI 기술로 해결합니다.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+        <div>
+          <img src="https://images.unsplash.com/photo-1656189368832-43a6dd24f18f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmFkaXRpb25hbCUyMGJhbmtpbmclMjBwYXBlcndvcmslMjBzdHJlc3N8ZW58MXx8fHwxNzU1NjUyMTA2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+               onerror="this.onerror=null;this.src='https://placehold.co/1080x720/e2e8f0/64748b?text=Image+Not+Found';"
+               alt="Traditional Banking Problems" class="w-full h-auto rounded-2xl shadow-xl"/>
+        </div>
+
+        <div class="space-y-8">
+          <div class="flex items-start space-x-4">
+            <div class="bg-red-100 p-3 rounded-lg">
+              <i class="bi bi-file-earmark-excel h-6 w-6 text-red-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">불투명한 심사 과정</h3>
+              <p class="text-gray-600 leading-relaxed">
+                대출 승인/거절 이유를 명확히 알 수 없어 개선 방향을 찾기 어려우며, 심사 기준이 공개되지 않아 신청자는 불안감을 느낄 수밖에 없습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="bg-orange-100 p-3 rounded-lg">
+              <i class="bi bi-clock-history h-6 w-6 text-orange-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">긴 대기 시간</h3>
+              <p class="text-gray-600 leading-relaxed">
+                복잡한 서류 검토와 수동 심사로 인해 평균 7-14일의 긴 처리 시간이 소요되며, 급한 자금이 필요한 고객들에게는 치명적인 단점입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="bg-yellow-100 p-3 rounded-lg">
+              <i class="bi bi-exclamation-triangle h-6 w-6 text-yellow-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">주관적 판단</h3>
+              <p class="text-gray-600 leading-relaxed">
+                심사자의 경험과 직감에 의존한 일관성 없는 심사 결과로 인해 동일한 조건의 신청자도 다른 결과를 받을 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Solution Preview -->
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-12">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">AI가 제시하는 해결책</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <i class="bi bi-check-circle-fill h-5 w-5 text-green-600"></i>
+                <span class="text-gray-700">즉시 심사 결과 (평균 2분)</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="bi bi-check-circle-fill h-5 w-5 text-green-600"></i>
+                <span class="text-gray-700">투명한 심사 근거 제시</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="bi bi-check-circle-fill h-5 w-5 text-green-600"></i>
+                <span class="text-gray-700">일관된 객관적 평가</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="bi bi-check-circle-fill h-5 w-5 text-green-600"></i>
+                <span class="text-gray-700">개인맞춤형 금융 솔루션</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1696861273647-92dfe8bb697c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsb2FuJTIwYXBwcm92YWwlMjBoYW5kc2hha2UlMjBidXNpbmVzc3xlbnwxfHx8fDE3NTU2NTI0MDR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1080x720/e2e8f0/64748b?text=Image+Not+Found';"
+                 alt="Loan Approval Success" class="w-full h-auto rounded-xl shadow-lg"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-20 bg-gray-50 rounded-lg shadow-xl">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            AI 기반 솔루션의 핵심 기능
+          </h2>
+          <p class="text-lg text-gray-600">
+            Kaggle 해외 대출 데이터셋으로 학습된 XGBoost 모델을 활용합니다.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition-shadow duration-200">
+            <div class="bg-blue-100 p-4 rounded-full w-fit mx-auto mb-4">
+              <i class="bi bi-lightbulb-fill h-12 w-12 text-blue-600"></i>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">AI 기반 심사</h4>
+            <p class="text-gray-600">
+              XGBoost 의사결정나무 모델을 통한 정확하고 일관된 대출 심사
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition-shadow duration-200">
+            <div class="bg-green-100 p-4 rounded-full w-fit mx-auto mb-4">
+              <i class="bi bi-eye-fill h-12 w-12 text-green-600"></i>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">설명 가능한 AI (XAI)</h4>
+            <p class="text-gray-600">
+              Feature Importance 분석으로 대출 결과의 근거를 명확히 제시
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition-shadow duration-200">
+            <div class="bg-purple-100 p-4 rounded-full w-fit mx-auto mb-4">
+              <i class="bi bi-bullseye h-12 w-12 text-purple-600"></i>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">개인화 추천</h4>
+            <p class="text-gray-600">
+              개인의 금융 상황을 분석하여 최적의 대출 조건을 추천
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{com/base/default_layout}">
+
+<div layout:fragment="content">
+    <div class="py-12 px-4 md:px-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">유저 정보 입력</h1>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden p-8 max-w-2xl mx-auto">
+            <form action="./insert" method="post" id="frmForm" class="space-y-6">
+                <ul th:object="${user}" class="space-y-6">
+                    <li>
+                        <label for="userId" class="block text-sm font-medium text-gray-700">유저 아이디</label>
+                        <input type="number" id="userId" th:field="*{userId}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                    </li>
+                    <li>
+                        <label for="name" class="block text-sm font-medium text-gray-700">이름</label>
+                        <input type="text" id="name" th:field="*{name}" maxlength="14" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                    </li>
+                    <li>
+                        <label for="age" class="block text-sm font-medium text-gray-700">나이</label>
+                        <input type="number" id="age" th:field="*{age}" min="0" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                    </li>
+                    <li>
+                        <label for="gender" class="block text-sm font-medium text-gray-700">성별</label>
+                        <select id="gender" th:field="*{gender}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                            <option value="-1" disabled selected>선택하세요</option>
+                            <option th:value="0" th:text="남성"></option>
+                            <option th:value="1" th:text="여성"></option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="education" class="block text-sm font-medium text-gray-700">학교</label>
+                        <select id="education" th:field="*{education}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                            <option value="" disabled selected>선택하세요</option>
+                            <option value="High School">고등학교 졸업</option>
+                            <option value="Associate">준학사</option>
+                            <option value="Bachelor">학사</option>
+                            <option value="Master">석사</option>
+                            <option value="Doctorate">박사</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="homeOwnership" class="block text-sm font-medium text-gray-700">주택 여부</label>
+                        <select id="homeOwnership" th:field="*{homeOwnership}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+                            <option value="" disabled selected>선택하세요</option>
+                            <option value="RENT">월세/전세</option>
+                            <option value="MORTGAGE">모기지</option>
+                            <option value="OWN">자가</option>
+                            <option value="OTHER">기타</option>
+                        </select>
+                    </li>
+                </ul>
+
+                <button type="submit" class="w-full bg-blue-600 text-white hover:bg-blue-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out" id="btnNew">
+                    신규등록
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>

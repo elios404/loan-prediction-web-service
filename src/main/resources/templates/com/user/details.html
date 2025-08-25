@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{com/base/default_layout}"> <!-- head, body 가 default_layout에 있기에 여기서는 제거 -->
+
+<!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
+<div layout:fragment="content">
+    <div class="py-12 px-4 md:px-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">유저 상세 정보</h1>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden p-8 max-w-2xl mx-auto">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <tbody>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">유저 아이디</td>
+                        <td class="px-6 py-4" th:text="*{userId}"></td>
+                    </tr>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">이름</td>
+                        <td class="px-6 py-4" th:text="*{name}"></td>
+                    </tr>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">나이</td>
+                        <td class="px-6 py-4" th:text="*{age}"></td>
+                    </tr>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">성별</td>
+                        <td class="px-6 py-4" th:text="*{gender == 0 ? '남성' : '여성'}"></td>
+                    </tr>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">학교</td>
+                        <td class="px-6 py-4" th:text="*{education}"></td>
+                    </tr>
+                    <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-semibold text-gray-900">주택 여부</td>
+                        <td class="px-6 py-4" th:text="*{homeOwnership}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="http://localhost:8088/user/list" class="w-full text-center bg-gray-200 text-gray-800 hover:bg-gray-300 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                    메인 페이지로 돌아가기
+                </a>
+                <a th:href="@{/user/update/{id}(id=${user.userId})}" class="w-full text-center bg-green-600 text-white hover:bg-green-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                    정보 수정
+                </a>
+                <a th:href="@{/user/delete/{id}(id=${user.userId})}" class="w-full text-center bg-red-600 text-white hover:bg-red-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                    정보 삭제
+                </a>
+            </div>
+        </div>
+        <div th:if="${message}" th:text="${message}" class="mt-4 text-sm text-gray-500 text-center"></div>
+    </div>
+</div>
+
+</html>

@@ -25,14 +25,14 @@ public class UserController {
         List<User> userList = userService.getUserList();
 
         model.addAttribute("userList", userList);
-        return "user/list";
+        return "com/user/list";
     }
 
     @GetMapping("details/{userId}")
     public String getUserInfo(@PathVariable("userId") int userId, Model model) {
         User user = userService.getUserInfo(userId);
         model.addAttribute("user", user);
-        return "user/details";
+        return "com/user/details";
     }
 
     @GetMapping("insert")
@@ -40,7 +40,7 @@ public class UserController {
 
         model.addAttribute("user", new User()); // 폼에 담아서 보내기 위해
 
-        return "user/insert";
+        return "com/user/insert";
     }
 
     @PostMapping("insert")
@@ -63,7 +63,7 @@ public class UserController {
 
         model.addAttribute("user", user); // 폼에 담아서 보내기 위해
 
-        return "user/update";
+        return "com/user/update";
     }
 
     @PostMapping("update")

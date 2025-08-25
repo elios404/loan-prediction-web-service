@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{com/base/default_layout}"> <!-- head, body 가 default_layout에 있기에 여기서는 제거 -->
+
+<!-- default_layout에서 content에 들어가 것 만 만들면 됨. -->
+<div layout:fragment="content">
+    <div class="p-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">대출 심사 목록</h1>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">유저 아이디</th>
+                    <th scope="col" class="px-6 py-3">이름</th>
+                    <th scope="col" class="px-6 py-3">대출 번호</th>
+                    <th scope="col" class="px-6 py-3">대출 금액</th>
+                    <th scope="col" class="px-6 py-3">승인 여부</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="test : ${testList}" class="bg-white border-b hover:bg-gray-100">
+                    <td class="px-6 py-4" th:text="${test.userId}"></td>
+                    <td class="px-6 py-4">
+                        <a th:href="@{/api/loantest/details/{userId}/{loanId}(userId=${test.userId}, loanId=${test.loanId})}" class="text-blue-600 hover:text-blue-800 font-medium">
+                            [[ ${test.name} ]]
+                        </a>
+                    </td>
+                    <td class="px-6 py-4" th:text="${test.loanId}"></td>
+                    <td class="px-6 py-4" th:text="${test.amount}"></td>
+                    <td class="px-6 py-4" th:text="${test.loanStatus}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 flex justify-between items-center">
+            <a href="http://localhost:8088/api/loantest/insert" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                <i class="bi bi-file-earmark-plus-fill mr-2"></i>대출 심사 테스트
+            </a>
+            <span th:if="${message}" th:text="${message}" class="text-sm text-gray-500"></span>
+        </div>
+    </div>
+</div>
+
+</html>

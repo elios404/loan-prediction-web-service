@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{com/base/default_layout}">
+
+<div layout:fragment="content">
+    <div class="p-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">유저 목록</h1>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">유저 아이디</th>
+                    <th scope="col" class="px-6 py-3">이름</th>
+                    <th scope="col" class="px-6 py-3">나이</th>
+                    <th scope="col" class="px-6 py-3">성별</th>
+                    <th scope="col" class="px-6 py-3">학교</th>
+                    <th scope="col" class="px-6 py-3">주택 여부</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="user : ${userList}" class="bg-white border-b hover:bg-gray-100">
+                    <td class="px-6 py-4" th:text="${user.userId}"></td>
+                    <td class="px-6 py-4">
+                        <a th:href="@{/user/details/{id}(id=${user.userId})}" class="text-blue-600 hover:text-blue-800 font-medium">
+                            [[ ${user.name} ]]
+                        </a>
+                    </td>
+                    <td class="px-6 py-4" th:text="${user.age}"></td>
+                    <td class="px-6 py-4" th:text="${user.gender == 0 ? '남성' : '여성'}"></td>
+                    <td class="px-6 py-4" th:text="${user.education}"></td>
+                    <td class="px-6 py-4" th:text="${user.homeOwnership}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 flex justify-between items-center">
+            <a href="http://localhost:8088/user/insert" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                <i class="bi bi-person-plus-fill mr-2"></i>Add New User
+            </a>
+            <span th:if="${message}" th:text="${message}" class="text-sm text-gray-500"></span>
+        </div>
+    </div>
+</div>
+
+</html>

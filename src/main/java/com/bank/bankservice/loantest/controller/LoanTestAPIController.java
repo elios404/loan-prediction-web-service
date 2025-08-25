@@ -41,6 +41,11 @@ public class LoanTestAPIController {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
+    @GetMapping("homepage")
+    public String getHomepage(Model model) {
+        return "com/base/homepage";
+    }
+
     /**
      * 전체 대출 테스트 목록을 조회하여 리스트 페이지로 반환합니다.
      * @param model 뷰로 전달할 데이터를 담는 객체
@@ -50,7 +55,7 @@ public class LoanTestAPIController {
     public String getAllTests(Model model) {
         List<LoanTest> testList = loanTestService.getTestList();
         model.addAttribute("testList", testList);
-        return "loantest/list";
+        return "com/loantest/list";
     }
 
     /**
@@ -64,7 +69,7 @@ public class LoanTestAPIController {
     public String getTestInfo(@PathVariable("userId") int userId, @PathVariable("loanId") int loanId, Model model) {
         LoanTest loanTest = loanTestService.getTestInfo(userId, loanId);
         model.addAttribute("testInfo", loanTest);
-        return "loantest/details";
+        return "com/loantest/details";
     }
 
     /**
@@ -75,7 +80,7 @@ public class LoanTestAPIController {
     @GetMapping("insert")
     public String insert(Model model) {
         model.addAttribute("loanTest", new LoanTest()); // 폼에 담아서 보내기 위해
-        return "loantest/insert";
+        return "com/loantest/insert";
     }
 
     /**
@@ -158,7 +163,7 @@ public class LoanTestAPIController {
     public String update(@PathVariable("userId") int userId, @PathVariable("loanId") int loanId, Model model) {
         LoanTest loanTest = loanTestService.getTestInfo(userId, loanId);
         model.addAttribute("loanTest", loanTest); // 폼에 담아서 보내기 위해
-        return "loantest/update";
+        return "com/loantest/update";
     }
 
     /**
