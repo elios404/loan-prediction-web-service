@@ -22,21 +22,21 @@
             <input type="number" id="loanId" th:field="*{loanId}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
           </li>
           <li>
-            <label for="income" class="block text-sm font-medium text-gray-700">수입 : </label>
-            <input type="number" id="income" th:field="*{income}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <label for="income" class="block text-sm font-medium text-gray-700">연 수입 : </label>
+            <input type="number" id="income" th:field="*{income}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="달러 단위로 입력해 주세요">
           </li>
           <li>
             <label for="empExp" class="block text-sm font-medium text-gray-700">경력 : </label>
-            <input type="number" id="empExp" th:field="*{empExp}" min="0" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="empExp" th:field="*{empExp}" min="0" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="경력 년수을 입력해 주세요">
           </li>
           <li>
             <label for="amount" class="block text-sm font-medium text-gray-700">대출 금액 : </label>
-            <input type="number" id="amount" th:field="*{amount}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="amount" th:field="*{amount}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="달러 단위로 입력해 주세요">
           </li>
           <li>
             <label for="intent" class="block text-sm font-medium text-gray-700">대출 목적 : </label>
             <select id="intent" th:field="*{intent}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
-              <option value="" disabled selected>선택하세요</option>
+              <option value="" disabled selected>대출 목적을 선택해주세요.</option>
               <option value="EDUCATION">교육</option>
               <option value="MEDICAL">의료</option>
               <option value="VENTURE">사업</option>
@@ -47,19 +47,19 @@
           </li>
           <li>
             <label for="intRate" class="block text-sm font-medium text-gray-700">이자율 : </label>
-            <input type="number" id="intRate" th:field="*{intRate}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="intRate" th:field="*{intRate}" min="0" step="0.1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="0~100% 사이의 퍼센트로 입력해 주세요.">
           </li>
           <li>
             <label for="loanPercentIncome" class="block text-sm font-medium text-gray-700">소득 대비 대출 비율 : </label>
-            <input type="number" id="loanPercentIncome" th:field="*{loanPercentIncome}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="loanPercentIncome" th:field="*{loanPercentIncome}" min="0" step="0.001" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="0~1 사이의 소수로 입력해 주세요.">
           </li>
           <li>
             <label for="credHistLength" class="block text-sm font-medium text-gray-700">신용 기록 기간 : </label>
-            <input type="number" id="credHistLength" th:field="*{credHistLength}" min="0" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="credHistLength" th:field="*{credHistLength}" min="0" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="신용 기록 년수를 입력해 주세요.">
           </li>
           <li>
             <label for="creditScore" class="block text-sm font-medium text-gray-700">신용 점수 : </label>
-            <input type="number" id="creditScore" th:field="*{creditScore}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2">
+            <input type="number" id="creditScore" th:field="*{creditScore}" step="1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 p-2" placeholder="신용점수를 입력해 주세요.">
           </li>
           <li>
             <label for="previousLoanDefaults" class="block text-sm font-medium text-gray-700">이전 대출 불이행 여부 : </label>
@@ -71,11 +71,35 @@
         </ul>
 
         <button type="submit" class="w-full bg-blue-600 text-white hover:bg-blue-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out" id="btnNew">
-          신규등록
+          대출 평가
         </button>
       </form>
+
+      <div id="loading-overlay" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="text-center text-white">
+          <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white mx-auto mb-6"></div>
+          <p class="text-2xl font-semibold">현재 모델이 답변 생성중입니다!</p>
+          <p class="text-lg mt-2">잠시만 기다려 주세요...</p>
+        </div>
+      </div>
+
     </div>
   </div>
+</div>
+
+
+<div layout:fragment="script">
+  <script>
+    // 폼(form) 요소와 로딩 오버레이 요소를 찾습니다.
+    const form = document.getElementById('frmForm');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // 폼이 'submit'(제출)될 때 실행될 함수를 등록합니다.
+    form.addEventListener('submit', function() {
+      // 숨겨져 있던 로딩 오버레이 화면에서 'hidden' 클래스를 제거하여 화면에 보여줍니다.
+      loadingOverlay.classList.remove('hidden');
+    });
+  </script>
 </div>
 
 

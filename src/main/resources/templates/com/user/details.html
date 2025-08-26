@@ -13,7 +13,7 @@
                 <table class="w-full text-sm text-left text-gray-500">
                     <tbody>
                     <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
-                        <td class="px-6 py-4 font-semibold text-gray-900">유저 아이디</td>
+                        <td class="px-6 py-4 font-semibold text-gray-900">유저 아이디 번호</td>
                         <td class="px-6 py-4" th:text="*{userId}"></td>
                     </tr>
                     <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
@@ -30,11 +30,29 @@
                     </tr>
                     <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
                         <td class="px-6 py-4 font-semibold text-gray-900">학교</td>
-                        <td class="px-6 py-4" th:text="*{education}"></td>
+                        <td class="px-6 py-4">
+                            <span th:switch="*{education}">
+                                <span th:case="'High School'">고등학교 졸업</span>
+                                <span th:case="'Associate'">준학사</span>
+                                <span th:case="'Bachelor'">학사</span>
+                                <span th:case="'Master'">석사</span>
+                                <span th:case="'Doctorate'">박사</span>
+                                <span th:case="*" th:text="*{education}"></span>
+                            </span>
+                        </td>
                     </tr>
+
                     <tr th:object="${user}" class="bg-white border-b hover:bg-gray-50">
                         <td class="px-6 py-4 font-semibold text-gray-900">주택 여부</td>
-                        <td class="px-6 py-4" th:text="*{homeOwnership}"></td>
+                        <td class="px-6 py-4">
+                            <span th:switch="*{homeOwnership}">
+                                <span th:case="'RENT'">월세/전세</span>
+                                <span th:case="'MORTGAGE'">모기지</span>
+                                <span th:case="'OWN'">자가</span>
+                                <span th:case="'OTHER'">기타</span>
+                                <span th:case="*" th:text="*{homeOwnership}"></span>
+                            </span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -42,7 +60,7 @@
 
             <div class="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <a href="http://localhost:8088/user/list" class="w-full text-center bg-gray-200 text-gray-800 hover:bg-gray-300 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
-                    메인 페이지로 돌아가기
+                    목록으로 돌아가기
                 </a>
                 <a th:href="@{/user/update/{id}(id=${user.userId})}" class="w-full text-center bg-green-600 text-white hover:bg-green-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
                     정보 수정

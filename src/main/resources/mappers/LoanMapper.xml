@@ -42,7 +42,7 @@
         INSERT INTO loan ( loan_id, user_id, income, emp_exp, amount, intent, int_rate, loan_percent_income,
                           cred_hist_length, credit_score, previous_loan_defaults, loan_status, loan_explain)
         VALUES ( #{loanId}, #{userId}, #{income}, #{empExp}, #{amount}, #{intent}, #{intRate}, #{loanPercentIncome},
-                #{credHistLength},#{creditScore},#{previousLoanDefaults},#{loanStatus}, #{loanExplain, jdbcType=VARCHAR, typeHandler=com.bank.bankservice.loantest.typehandler.ListTypeHandler})
+                #{credHistLength},#{creditScore},#{previousLoanDefaults},#{loanStatus}, #{loanExplain, jdbcType=VARCHAR, typeHandler=com.bank.bankservice.loantest.typehandler.MapTypeHandler})
     </insert>
 
     <delete id="deleteLoan" parameterType="com.bank.bankservice.loantest.model.Loan">

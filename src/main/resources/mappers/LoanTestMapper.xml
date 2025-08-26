@@ -33,7 +33,7 @@
             loan.credit_score       AS  creditScore,
             loan.previous_loan_defaults AS  previousLoanDefaults,
             loan.loan_status        AS  loanStatus,
-            loan.loan_explain       AS  loanExpalin
+            loan.loan_explain       AS  loanExplain
         FROM user
                  JOIN loan ON user.user_id = loan.user_id
         WHERE user.user_id = #{userId} AND loan.loan_id = #{loanId};

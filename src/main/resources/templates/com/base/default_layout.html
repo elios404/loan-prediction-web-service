@@ -12,7 +12,7 @@
     <!-- CSS 파일 링크 추가 -->
     <link rel="stylesheet" th:href="@{/styles/globals.css}">
     <link rel="stylesheet" th:href="@{/styles/index.css}">
-    <title>대출 관리</title>
+    <title>AI 대출 평가</title>
 
     <th:block layout:fragment="css"></th:block>
 </head>
@@ -22,59 +22,25 @@
     <header class="bg-white shadow-sm border-b border-gray-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- 서비스 이름 (왼쪽) -->
-                <a href="#" class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain h-8 w-8 text-blue-600">
-                        <path d="M12 5a3 3 0 1 0-3 3"/>
-                        <path d="M12 5a3 3 0 1 1 3 3"/>
-                        <path d="M12 5a3 3 0 1 0 3 3"/>
-                        <path d="M12 5a3 3 0 1 1-3 3"/>
-                        <path d="M12 18a3 3 0 1 0-3-3"/>
-                        <path d="M12 18a3 3 0 1 1 3-3"/>
-                        <path d="M12 18a3 3 0 1 0 3-3"/>
-                        <path d="M12 18a3 3 0 1 1-3-3"/>
-                        <path d="M12 12a3 3 0 1 0-3-3"/>
-                        <path d="M12 12a3 3 0 1 1 3-3"/>
-                        <path d="M12 12a3 3 0 1 0 3-3"/>
-                        <path d="M12 12a3 3 0 1 1-3-3"/>
-                        <path d="M12 21a3 3 0 1 0-3-3"/>
-                        <path d="M12 21a3 3 0 1 1 3-3"/>
-                        <path d="M12 21a3 3 0 1 0 3-3"/>
-                        <path d="M12 21a3 3 0 1 1-3-3"/>
-                        <path d="M12 3a3 3 0 1 0-3-3"/>
-                        <path d="M12 3a3 3 0 1 1 3-3"/>
-                        <path d="M12 3a3 3 0 1 0 3-3"/>
-                        <path d="M12 3a3 3 0 1 1-3-3"/>
-                        <path d="M12 15a3 3 0 1 0-3-3"/>
-                        <path d="M12 15a3 3 0 1 1 3-3"/>
-                        <path d="M12 15a3 3 0 1 0 3-3"/>
-                        <path d="M12 15a3 3 0 1 1-3-3"/>
-                    </svg>
-<!--                    <span class="ml-2 text-xl font-bold text-gray-900">AI 대출</span>-->
-                    <a href="/api/loantest/homepage" class="ml-2 text-xl font-bold text-gray-900">AI 대출</a>
+                <a href="/api/loantest/homepage" class="flex items-center">
+                    <i class="bi bi-robot text-3xl text-blue-600"></i>
+                    <span class="ml-2 text-xl font-bold text-gray-900">AI 대출 심사 서비스</span>
                 </a>
 
-                <!-- 네비게이션 바 (중앙) -->
-                <nav class="flex-grow-1 text-center">
-                    <a href="/user/list" class="mx-3 text-decoration-none text-gray-600 hover:text-blue-600 font-medium">
-                        유저 정보
+                <div class="flex items-center">
+                    <nav class="mr-6"> <a href="/user/list" class="mx-3 text-decoration-none text-gray-600 hover:text-blue-600 font-medium">
+                        유저 개인 정보
                     </a>
-                    <a href="/api/loantest/list" class="mx-3 text-decoration-none text-gray-600 hover:text-blue-600 font-medium">
-                        대출 평가 정보
-                    </a>
-                </nav>
+                        <a href="/api/loantest/list" class="mx-3 text-decoration-none text-gray-600 hover:text-blue-600 font-medium">
+                            대출 평가 기록
+                        </a>
+                    </nav>
 
-                <!-- 로그인/로그아웃 버튼 (오른쪽) -->
-                <div class="flex items-center space-x-2">
-                    <!-- 로그인 버튼 (로그아웃 상태일 때) -->
-                    <a href="/login" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium transition-colors duration-200 ease-in-out">
-                        <i class="bi bi-person-circle mr-2"></i>로그인
-                    </a>
-
-                    <!-- 로그아웃 버튼 (로그인 상태일 때) -->
-                    <!-- <a href="/logout" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md font-medium transition-colors duration-200 ease-in-out">
-                        <i class="bi bi-box-arrow-right mr-2"></i>로그아웃
-                    </a> -->
+                    <div class="flex items-center space-x-2">
+                        <a href="/login" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium transition-colors duration-200 ease-in-out">
+                            <i class="bi bi-person-circle mr-2"></i>로그인
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,7 +48,7 @@
     </header>
     <!-- 헤더 영역 끝 -->
 
-    <div class="main-content p-8">
+    <div class="main-content p-8 bg-gray-50">
         <th:block layout:fragment="content"></th:block>
     </div>
 
@@ -92,33 +58,8 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain h-8 w-8 text-blue-400">
-                            <path d="M12 5a3 3 0 1 0-3 3"/>
-                            <path d="M12 5a3 3 0 1 1 3 3"/>
-                            <path d="M12 5a3 3 0 1 0 3 3"/>
-                            <path d="M12 5a3 3 0 1 1-3 3"/>
-                            <path d="M12 18a3 3 0 1 0-3-3"/>
-                            <path d="M12 18a3 3 0 1 1 3-3"/>
-                            <path d="M12 18a3 3 0 1 0 3-3"/>
-                            <path d="M12 18a3 3 0 1 1-3-3"/>
-                            <path d="M12 12a3 3 0 1 0-3-3"/>
-                            <path d="M12 12a3 3 0 1 1 3-3"/>
-                            <path d="M12 12a3 3 0 1 0 3-3"/>
-                            <path d="M12 12a3 3 0 1 1-3-3"/>
-                            <path d="M12 21a3 3 0 1 0-3-3"/>
-                            <path d="M12 21a3 3 0 1 1 3-3"/>
-                            <path d="M12 21a3 3 0 1 0 3-3"/>
-                            <path d="M12 21a3 3 0 1 1-3-3"/>
-                            <path d="M12 3a3 3 0 1 0-3-3"/>
-                            <path d="M12 3a3 3 0 1 1 3-3"/>
-                            <path d="M12 3a3 3 0 1 0 3-3"/>
-                            <path d="M12 3a3 3 0 1 1-3-3"/>
-                            <path d="M12 15a3 3 0 1 0-3-3"/>
-                            <path d="M12 15a3 3 0 1 1 3-3"/>
-                            <path d="M12 15a3 3 0 1 0 3-3"/>
-                            <path d="M12 15a3 3 0 1 1-3-3"/>
-                        </svg>
-                        <span class="ml-2 text-xl font-bold">AI 대출</span>
+                        <i class="bi bi-robot h-8 w-8 text-3xl text-blue-600"></i>
+                        <span class="ml-2 text-xl font-bold">AI 대출 심사 서비스</span>
                     </div>
                     <p class="text-gray-400">
                         투명하고 공정한 AI 기반 대출 서비스로 금융의 미래를 만들어갑니다.

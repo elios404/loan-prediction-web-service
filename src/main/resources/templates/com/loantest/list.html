@@ -10,7 +10,7 @@
 
         <div class="bg-white rounded-lg shadow-xl overflow-hidden">
             <table class="w-full text-sm text-left text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <thead class="text-lg text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">유저 아이디</th>
                     <th scope="col" class="px-6 py-3">이름</th>
@@ -30,7 +30,7 @@
                     </td>
                     <td class="px-6 py-4" th:text="${test.loanId}"></td>
                     <td class="px-6 py-4" th:text="${test.amount}"></td>
-                    <td class="px-6 py-4" th:text="${test.loanStatus}"></td>
+                    <td class="px-6 py-4" th:text="*{test.loanStatus == 0 ? '대출 불가' : '대출 가능'}"></td>
                 </tr>
                 </tbody>
             </table>

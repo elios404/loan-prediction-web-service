@@ -2,7 +2,7 @@ package com.bank.bankservice.loantest.dto;
 
 import lombok.*;
 
-import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -35,6 +35,6 @@ public class LoanTest {
     private int creditScore;
     private int previousLoanDefaults;
     private int loanStatus = -1;
-    private List<Double> loanExplain;
+    private Map<String, Object> loanExplain;
 
 }

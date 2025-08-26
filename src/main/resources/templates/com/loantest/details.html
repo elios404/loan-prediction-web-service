@@ -26,22 +26,39 @@
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">성별</td>
-            <td class="px-6 py-4" th:text="*{gender}"></td>
+            <td class="px-6 py-4" th:text="*{gender == 0 ? '남성' : '여성'}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">학교</td>
-            <td class="px-6 py-4" th:text="*{education}"></td>
+            <td class="px-6 py-4">
+                <span th:switch="*{education}">
+                    <span th:case="'High School'">고등학교 졸업</span>
+                    <span th:case="'Associate'">준학사</span>
+                    <span th:case="'Bachelor'">학사</span>
+                    <span th:case="'Master'">석사</span>
+                    <span th:case="'Doctorate'">박사</span>
+                    <span th:case="*" th:text="*{education}"></span>
+                </span>
+            </td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">집 소유 여부</td>
-            <td class="px-6 py-4" th:text="*{homeOwnership}"></td>
+            <td class="px-6 py-4">
+                <span th:switch="*{homeOwnership}">
+                    <span th:case="'RENT'">월세/전세</span>
+                    <span th:case="'MORTGAGE'">모기지</span>
+                    <span th:case="'OWN'">자가</span>
+                    <span th:case="'OTHER'">기타</span>
+                    <span th:case="*" th:text="*{homeOwnership}"></span>
+                </span>
+            </td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
-            <td class="px-6 py-4 font-semibold text-gray-900">대출 아이디</td>
+            <td class="px-6 py-4 font-semibold text-gray-900">대출 평가 번호</td>
             <td class="px-6 py-4" th:text="*{loanId}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
-            <td class="px-6 py-4 font-semibold text-gray-900">수입</td>
+            <td class="px-6 py-4 font-semibold text-gray-900">수입(달러)</td>
             <td class="px-6 py-4" th:text="*{income}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
@@ -49,7 +66,7 @@
             <td class="px-6 py-4" th:text="*{empExp}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
-            <td class="px-6 py-4 font-semibold text-gray-900">대출 금액</td>
+            <td class="px-6 py-4 font-semibold text-gray-900">대출 금액(달러)</td>
             <td class="px-6 py-4" th:text="*{amount}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
@@ -57,12 +74,12 @@
             <td class="px-6 py-4" th:text="*{intent}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
-            <td class="px-6 py-4 font-semibold text-gray-900">이자율</td>
+            <td class="px-6 py-4 font-semibold text-gray-900">이자율(%)</td>
             <td class="px-6 py-4" th:text="*{intRate}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
-            <td class="px-6 py-4 font-semibold text-gray-900">소득 대비 대출 비율</td>
-            <td class="px-6 py-4" th:text="*{loanPercentIncome}"></td>
+            <td class="px-6 py-4 font-semibold text-gray-900">소득 대비 대출 비율(%)</td>
+            <td class="px-6 py-4" th:text="*{loanPercentIncome*100}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">신용 기록 기간</td>
@@ -75,10 +92,12 @@
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">이전 대출 불이행 여부</td>
             <td class="px-6 py-4" th:text="*{previousLoanDefaults}"></td>
+            <td class="px-6 py-4" th:text="*{previousLoanDefaults == 0 ? '없음' : '있음'}"></td>
           </tr>
           <tr th:object="${testInfo}" class="bg-white border-b hover:bg-gray-50">
             <td class="px-6 py-4 font-semibold text-gray-900">대출 상태</td>
             <td class="px-6 py-4" th:text="*{loanStatus}"></td>
+            <td class="px-6 py-4" th:text="*{loanStatus == 0 ? '대출 불가' : '대출 가능'}"></td>
           </tr>
           </tbody>
 
@@ -87,14 +106,30 @@
 
       <div class="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
         <a href="http://localhost:8088/api/loantest/list" class="w-full text-center bg-gray-200 text-gray-800 hover:bg-gray-300 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
-          메인 페이지로 돌아가기
+          목록으로 돌아가기
         </a>
-        <a th:href="@{/api/loantest/update/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="w-full text-center bg-green-600 text-white hover:bg-green-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
-          정보 수정
-        </a>
-        <a th:href="@{/api/loantest/delete/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="w-full text-center bg-red-600 text-white hover:bg-red-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">
-          정보 삭제
-        </a>
+<!--        <a th:href="@{/api/loantest/update/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="w-full text-center bg-green-600 text-white hover:bg-green-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">-->
+<!--          정보 수정-->
+<!--        </a>-->
+<!--        <a th:href="@{/api/loantest/delete/{userId}/{loanId}(userId=${testInfo.userId}, loanId=${testInfo.loanId})}" class="w-full text-center bg-red-600 text-white hover:bg-red-700 py-2 px-4 rounded-md font-medium transition-colors duration-200 ease-in-out">-->
+<!--          정보 삭제-->
+<!--        </a>-->
+      </div>
+    </div>
+
+    <div th:if="${testInfo.loanExplain != null and !testInfo.loanExplain.isEmpty()}" class="bg-white rounded-lg shadow-xl overflow-hidden p-8 max-w-2xl mx-auto mt-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">AI 대출 심사 분석 결과</h2>
+      <div class="space-y-4">
+        <div th:each="entry : ${testInfo.loanExplain}" class="p-4 bg-gray-50 rounded-lg">
+          <h3 th:switch="${entry.key}" class="font-semibold text-gray-800 mb-1 flex items-center">
+            <span th:case="'first_positive'" class="flex items-center"><i class="bi bi-graph-up-arrow mr-2 text-green-600"></i>가장 긍정적인 요인</span>
+            <span th:case="'second_positive'" class="flex items-center"><i class="bi bi-arrow-up-right-circle mr-2 text-green-500"></i>긍정적인 요인</span>
+            <span th:case="'first_negative'" class="flex items-center"><i class="bi bi-graph-down-arrow mr-2 text-red-600"></i>가장 부정적인 요인</span>
+            <span th:case="'second_negative'" class="flex items-center"><i class="bi bi-arrow-down-right-circle mr-2 text-red-500"></i>부정적인 요인</span>
+            <span th:case="'comment'" class="flex items-center"><i class="bi bi-chat-left-text mr-2 text-blue-600"></i>총평</span>
+            <span th:case="*" class="flex items-center">[[${entry.key}]]</span> </h3>
+          <p class="text-gray-700 pl-6">[[${entry.value}]]</p>
+        </div>
       </div>
     </div>
 

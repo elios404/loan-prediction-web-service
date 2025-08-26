@@ -126,7 +126,7 @@ public class LoanTestAPIController {
 
             // 4. 응답 처리 및 예측 결과 반영
             int predictedLoanStatus = ((Number) fastAPIResponse.get("prediction")).intValue();
-            List<Double> loanExplain = (List<Double>) fastAPIResponse.get("shap_values");
+            Map<String, Object> loanExplain = (Map<String, Object>) fastAPIResponse.get("shap_values");
 
 //            loanTest.setLoanStatus(predictedLoanStatus); // 예측된 대출 상태를 객체에 설정
 
@@ -148,7 +148,7 @@ public class LoanTestAPIController {
             redirectAttributes.addFlashAttribute("message", "통신 또는 등록 실패: " + e.getMessage());
         }
 
-        return "redirect:/loantest/list";
+        return "redirect:/api/loantest/list";
     }
 
 
