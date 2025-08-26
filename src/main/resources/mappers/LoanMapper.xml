@@ -5,8 +5,8 @@
 
     <select id="getLoanCount" parameterType="int" resultType="int">
         SELECT COUNT(*) FROM loan
-        <if test="loanId != null">
-            WHERE loan_id = #{loanId}
+        <if test="userId != null">
+            WHERE user_id = #{userId}
         </if>
     </select>
 
@@ -28,7 +28,7 @@
                     previous_loan_defaults 	AS 	previousLoanDefaults,
                     loan_status 	        AS 	loanStatus,
                     loan_explain            AS  loanExplain
-        FROM loan WHERE loan_id = #{loanId}
+        FROM loan WHERE loan_id = #{loanId} and user_id = #{userId}
     </select>
 
 <!--    이미 기록된 요소를 업데이트 할 필요는 없다고 판단됨. 새로운 insert 가 발생하는 것이 더 좋을 듯?-->

@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface LoanService {
     int getLoanCount();
-    int getLoanCount(@Param("loanId") int loanId);
+    int getLoanCount(@Param("userId") int userId);
 
     List<Loan> getLoanList();
-    Loan getLoanInfo(int loanId);
+    Loan getLoanInfo(int loanId, int userId);
 
     void insertLoan(Loan loan);
     void updateLoan(Loan loan);
-    int deleteLoan(int userId, int loanId);
+    int deleteLoan(int loanId, int userId);
 }

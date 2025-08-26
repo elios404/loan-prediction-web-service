@@ -20,4 +20,6 @@ public interface UserRepository {
     void insertUser(User user); // 새로운 유저 정보를 insert를 통해서 등록
     void updateUser(User user); // 기존 유저의 정보를 update를 통해서 갱신, 각 유저의 details 페이지에서 갱신 가능
     int deleteUser(int id); // 기존 유저의 정보를 삭제, 각 유저의 details 페이지에서 삭제 가능
+
+    User findByEmail(@Param("email") String email);
 }

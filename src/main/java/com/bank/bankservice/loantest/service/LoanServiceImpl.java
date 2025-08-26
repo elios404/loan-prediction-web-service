@@ -19,8 +19,8 @@ public class LoanServiceImpl implements LoanService{
     }
 
     @Override
-    public int getLoanCount(int loanId) {
-        return loanRepository.getLoanCount(loanId);
+    public int getLoanCount(int userId) {
+        return loanRepository.getLoanCount(userId);
     }
 
     @Override
@@ -30,8 +30,8 @@ public class LoanServiceImpl implements LoanService{
     }
 
     @Override
-    public Loan getLoanInfo(int loanId) {
-        Loan loan =  loanRepository.getLoanInfo(loanId);
+    public Loan getLoanInfo(int loanId, int userId) {
+        Loan loan =  loanRepository.getLoanInfo(loanId, userId);
         return loan;
     }
 
@@ -46,7 +46,7 @@ public class LoanServiceImpl implements LoanService{
     }
 
     @Override
-    public int deleteLoan(int userId, int loanId) {
-        return loanRepository.deleteLoan(userId, loanId);
+    public int deleteLoan(int loanId, int userId) {
+        return loanRepository.deleteLoan(loanId, userId);
     }
 }

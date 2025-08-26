@@ -18,4 +18,8 @@ public class User {
     private int gender;
     private String education;
     private String homeOwnership;
+
+    private String email;
+    private String oauthProvider;
+    private String loginType;
 }

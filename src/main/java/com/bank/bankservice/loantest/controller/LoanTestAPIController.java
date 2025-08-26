@@ -67,7 +67,7 @@ public class LoanTestAPIController {
      */
     @GetMapping("details/{userId}/{loanId}")
     public String getTestInfo(@PathVariable("userId") int userId, @PathVariable("loanId") int loanId, Model model) {
-        LoanTest loanTest = loanTestService.getTestInfo(userId, loanId);
+        LoanTest loanTest = loanTestService.getTestInfo(loanId, userId);
         model.addAttribute("testInfo", loanTest);
         return "com/loantest/details";
     }
@@ -161,7 +161,7 @@ public class LoanTestAPIController {
      */
     @GetMapping("update/{userId}/{loanId}")
     public String update(@PathVariable("userId") int userId, @PathVariable("loanId") int loanId, Model model) {
-        LoanTest loanTest = loanTestService.getTestInfo(userId, loanId);
+        LoanTest loanTest = loanTestService.getTestInfo(loanId, userId);
         model.addAttribute("loanTest", loanTest); // 폼에 담아서 보내기 위해
         return "com/loantest/update";
     }
@@ -198,7 +198,7 @@ public class LoanTestAPIController {
     public String deleteUser(@PathVariable("userId") int userId, @PathVariable("loanId") int loanId, RedirectAttributes redirectAttributes) {
         log.info("test delete" + loanId);
         try {
-            int cnt = loanService.deleteLoan(userId, loanId);
+            int cnt = loanService.deleteLoan(loanId, userId);
 
             if (cnt > 0) {
                 redirectAttributes.addFlashAttribute("message", "success");

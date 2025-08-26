@@ -52,3 +52,5 @@ hs_err_pid*.log
 # These files contain sensitive or user-specific info and should NOT be committed
 .DS_Store
 *.log
+
+src/main/resources/application.properties

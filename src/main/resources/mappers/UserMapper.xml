@@ -20,19 +20,38 @@
                   age 	            AS 	age,
                   gender 	        AS  gender,
                   education         AS  education,
-                  home_ownership    AS  homeOwnership
-        FROM user WHERE user_id = #{userId}
+                  home_ownership    AS  homeOwnership,
+                    email             AS email,
+                    oauth_provider    AS oauthProvider,
+                    login_type        AS loginType
+        FROM user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="findByEmail" parameterType="String" resultType="com.bank.bankservice.loantest.model.User">
+        SELECT user_id           AS userId,
+               name              AS name,
+               age               AS age,
+               gender            AS gender,
+               education         AS education,
+               home_ownership    AS homeOwnership,
+               email             AS email,
+               oauth_provider    AS oauthProvider,
+               login_type        AS loginType
+        FROM user
+        WHERE email = #{email}
     </select>
 
     <update id="updateUser" parameterType="com.bank.bankservice.loantest.model.User">
         UPDATE user
-        SET name=#{name}, age=#{age}, gender=#{gender}, education=#{education}, home_ownership=#{homeOwnership}
+        SET name=#{name}, age=#{age}, gender=#{gender}, education=#{education},
+            home_ownership=#{homeOwnership}, email=#{email}, oauth_provider=#{oauthProvider}, login_type=#{loginType}
         WHERE user_id = #{userId}
     </update>
 
     <insert id="insertUser" parameterType="com.bank.bankservice.loantest.model.User">
-        INSERT INTO user ( user_id, name, age, gender, education, home_ownership )
-        VALUES ( #{userId}, #{name}, #{age}, #{gender}, #{education}, #{homeOwnership})
+        INSERT INTO user (user_id, name, age, gender, education, home_ownership, email, oauth_provider, login_type)
+        VALUES (#{userId}, #{name}, #{age}, #{gender}, #{education}, #{homeOwnership}, #{email}, #{oauthProvider}, #{loginType})
     </insert>
 
     <delete id="deleteUser" parameterType="com.bank.bankservice.loantest.model.User">

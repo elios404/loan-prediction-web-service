@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface LoanTestService {
     int getTestCount();
-    int getTestCount(@Param("userId") int userId, @Param("loanId") int loanId);
+    int getTestCount(@Param("loanId") int loanId, @Param("userId") int userId);
 
     List<LoanTest> getTestList();
-    LoanTest getTestInfo(int userId, int loanId);
+    LoanTest getTestInfo(int loanId, int userId);
 
     void insertTest(Loan loan);
     void updateTest(Loan loan);
-    int deleteTest(int userId, int loanId);
+    int deleteTest(int loanId, int userId);
 
 }

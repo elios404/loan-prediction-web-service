@@ -28,8 +28,8 @@ public class LoanTestServiceImpl implements LoanTestService {
     }
 
     @Override
-    public int getTestCount(int userId, int loanId) {
-        return loanTestRepository.getTestCount(userId, loanId);
+    public int getTestCount(int loanId, int userId) {
+        return loanTestRepository.getTestCount(loanId, userId);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class LoanTestServiceImpl implements LoanTestService {
     }
 
     @Override
-    public LoanTest getTestInfo(int userId, int loanId) {
-        return loanTestRepository.getTestInfo(userId, loanId);
+    public LoanTest getTestInfo(int loanId, int userId) {
+        return loanTestRepository.getTestInfo(loanId, userId);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class LoanTestServiceImpl implements LoanTestService {
     }
 
     @Override
-    public int deleteTest(int userId, int loanId) {
-        return loanRepository.deleteLoan(userId, loanId);
+    public int deleteTest(int loanId, int userId) {
+        return loanRepository.deleteLoan(loanId, userId);
     }
 }
